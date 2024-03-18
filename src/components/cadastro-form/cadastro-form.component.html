@@ -1,0 +1,28 @@
+<div class="flex flex-col items-center justify-center gap-10 pt-10" >
+    <h1 class="text-violet-400 font-bold">Cadastro de Forncedores</h1>
+    <div>
+        <form (ngSubmit)="onSubmit()" [formGroup]="formForn" #formRef="ngForm" class="flex flex-col gap-5">
+        <label for="nome">
+            <span class="text-white">Nome</span>
+            <input type="text" name="nome" formControlName="nome">
+            @if(nome.invalid && formRef.submitted){
+                <pre class="text-red-500">Nome é obrigatório</pre>
+            }
+        </label>
+        <label for="email">
+            <span class="text-white">Email</span>
+            <input type="text" name="email" formControlName="email">
+            @if(email.invalid && formRef.submitted){
+                <pre class="text-red-500">Email inválido</pre>
+            }
+        </label>
+        <app-cidade-form/>
+        <button type="submit" class="text-white bg-green-600 px-4 py-2 rounded-md hover:bg-green-700">Salvar</button>
+        </form>
+    </div>
+    <div>
+        <h2 class="text-violet-400 font-bold">Fornecedores</h2>
+     <div>
+        {{formForn.value | json}}
+     </div>
+</div>
